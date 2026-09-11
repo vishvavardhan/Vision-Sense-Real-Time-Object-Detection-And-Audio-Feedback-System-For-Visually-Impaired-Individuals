@@ -1,0 +1,373 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>VisionAssist</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.10.1"></script>
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/price_rangs.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .single-slider {
+            position: relative;
+        }
+        
+        .single-slider::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('{% static '/img/job3.jpg' %}');
+            background-position: center;
+            background-size: cover;
+            opacity: 0.3;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <h3>VisionAssist</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+        <div class="header-area header-transparrent">
+            <div class="headder-top header-sticky">
+                <div class="container">
+                    <div class="row align-items-center justify-content-end">
+                        <div class="col-lg-4">
+                            <div class="logo">
+                                <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+                                font-size: 36px; 
+                                color: #28395a; 
+                                font-weight: 800; 
+                                text-transform: uppercase; 
+                                letter-spacing: 3px; 
+                                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+                                background-color: #f8f9fa;
+                                padding: 10px 20px;
+                                border-radius: 10px;">Vision Assist</h2>
+                            </div>  
+                        </div>
+                        <div class="col-lg-4  "> 
+                            <div class="main-menu">
+                                <nav class="d-none d-lg-block">
+                                    <ul id="navigation">
+                                        <li><a href="{% url 'dashboard' %}"  style="color:red;">Dashboard</a></li>
+                                        <li><a href="{% url 'profile' %}">My Profile</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-lg-4"> 
+                            <div class="header-btn d-none f-right d-lg-block "> 
+                                <a href="{% url 'user_logout' %}" class="btn head-btn1">LogOut</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        
+        <style>
+            .container-bs {
+                margin-top: 50px;
+            }
+            
+          
+            
+            .details-section-bs {
+                background-color: #fff;
+                padding: 30px;
+                border-radius: 15px;
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                overflow: hidden;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .details-section-bs:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
+            
+            .heading-bs {
+                color: #333;
+                font-size: 28px;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                font-weight: bold;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+                transition: color 0.3s ease;
+            }
+            
+            .details-section-bs:hover .heading-bs {
+                color: #e74c3c;
+            }
+            
+            .content-bs {
+                color: #666;
+                font-size: 18px;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+            
+            .form-group-bs {
+                margin-bottom: 30px;
+            }
+            
+            .form-control-file-bs {
+                border: none;
+                border-bottom: 2px solid #3498db;
+                border-radius: 0;
+                padding: 15px;
+                background-color: #f9f9f9;
+                box-shadow: none;
+                transition: border-bottom 0.3s ease;
+                font-size: 18px;
+                width: calc(100% - 30px);
+            }
+            
+            .form-control-file-bs:focus {
+                outline: none;
+                border-bottom-color: #e74c3c;
+            }
+            
+            .btn-upload-bs,
+            .btn-webcam-bs {
+                background-color: #3498db;
+                border: none;
+                border-radius: 30px;
+                padding: 20px;
+                color: #fff;
+                font-size: 20px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                width: calc(100% - 40px);
+            }
+            
+            .btn-upload-bs:hover,
+            .btn-webcam-bs:hover {
+                background-color: #2980b9;
+            }
+        </style>
+        
+        <div class="container-bs container mb-5">
+            <div class="heading-section" style="background-color: #3498db; padding: 20px; text-align: center; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); margin-bottom: 20px;">
+                <h2 style="font-size: 36px; color: #fff; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); margin: 0;">Upload or Open Webcam</h2>
+                <p style="font-size: 18px; color: #fff; margin-top: 10px;">Select an option below to proceed</p>
+            </div>
+            <div class="row-bs row">
+                <!-- First Column -->
+                <div class="col-bs col-6">
+                    <div class="details-section-bs">
+                        <h1 class="heading-bs">Upload Image</h1>
+                        {% if processed_image_url %}
+                        <img src="{{ processed_image_url }}" alt="Processed Image" class="img-fluid" style="width: 200px;">
+                        {% else %}
+                        <p class="content-bs" style="font-size: 28px; color: #000; margin-bottom: 35px; font-style: italic; text-align: center; line-height: 1.5; font-weight: bold; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);">Tell us about the image you want to analyze. Once uploaded, we'll detect the item and announce it aloud.</p>
+                        {% endif %}
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group-bs" style="margin-bottom: 30px; text-align: center;">
+                                <label for="imageUpload" style="font-size: 22px; color: #444; margin-bottom: 15px; display: block;">Select Image:</label>
+                                <input type="file" class="form-control-file-bs" id="imageUpload" name="imageUpload" accept="image/*" style="padding: 15px; border: none; border-bottom: 2px solid #3498db; border-radius: 8px; background-color: #f4f4f4; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); transition: border-bottom 0.3s ease; font-size: 20px; width: calc(100% - 30px); outline: none; color: #333;">
+                            </div>
+                            <button type="submit" class="btn-upload-bs">Upload</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- Second Column -->
+                <div class="col-bs col-6">
+                    <div class="details-section-bs">
+                        <h1 class="heading-bs">Open Web Camera</h1>
+                        <p class="content-bs" style="font-size: 18px; color: #000; margin-bottom: 25px; font-style: italic; text-align: center; line-height: 1.5; font-weight: bold; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);">
+                            Alternatively, you can open your webcam and show items in front of it. We'll detect the item and announce it aloud.
+                        </p>
+                        <a href="{% url 'video_feed' %}" class="btn-webcam-bs">Live video</a>
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+            
+            
+            
+        </main>
+        <footer>
+            <!-- Footer Start-->
+            <div class="footer-area footer-bg footer-padding">
+                <div class="container">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="single-footer-caption mb-30">
+                                    <div class="footer-tittle">
+                                        <h4>About Us</h4>
+                                        <div class="footer-pera">
+                                            <p>Our platform connects talented individuals with job opportunities tailored to their skills and experience.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Contact Info</h4>
+                                    <ul>
+                                        <li>
+                                            <p>Address :Lb nagar, Hyderabad.</p>
+                                        </li>
+                                        <li><a href="#">Phone :+91 8555 8879 86</a></li>
+                                        <li><a href="#">Email : info@codebook.in</a></li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Important Link</h4>
+                                    <ul>
+                                        <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                                        <li><a href="{% url 'profile' %}">My Profile</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!--  -->
+                
+            </div>
+        </div>
+        <!-- footer-bottom area -->
+        <div class="footer-bottom-area footer-bg">
+            <div class="container">
+                <div class="footer-border">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-xl-10 col-lg-10 ">
+                            <div class="footer-copy-right">
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://codebook.in" target="_blank">Codebook</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
+    
+    <!-- JS here -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% if messages %}              
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <script>swal({
+        title: "Warning!",
+        text: "{{message}}",
+        icon: "warning",
+        button: "OK",
+    });
+</script>
+
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+<script>swal({
+    title: "Info :)",
+    text: "{{message}}",
+    icon: "info",
+    button: "OK",
+});
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>swal({
+    title: "Error :)",
+    text: "{{message}}",
+    icon: "error",
+    button: "OK",
+});
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>swal({
+    title: "Success :)",
+    text: "{{message}}",
+    icon: "success",
+    button: "OK",
+});
+</script>
+{% endif %}              
+{% endfor %} 
+{% endif %}
+<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="{% static 'js/price_rangs.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/animated.headline.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.sticky.js' %}"></script>
+<script src="{% static 'js/contact.js' %}"></script>
+<script src="{% static 'js/jquery.form.js' %}"></script>
+<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'js/mail-script.js' %}"></script>
+<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+
+</body>
+</html>

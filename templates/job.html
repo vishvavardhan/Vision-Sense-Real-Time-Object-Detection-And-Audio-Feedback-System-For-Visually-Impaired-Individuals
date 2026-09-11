@@ -1,0 +1,516 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>VisionAssist</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-ZzRyOWWskRRZdhaJ4UoaDfPjOeK48PPJ2uQhU1iu7vrHQ2Rgld/1iMDVRkrMz8la" crossorigin="anonymous">
+
+    <!-- Include ProgressBar.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
+    
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/price_rangs.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .custom-file-upload {
+            margin-top: 20px;
+        }
+        
+        .btn-submit {
+            display: none;
+        }
+        
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        .view-description-btn {
+            background-color: #8b92dd; 
+            color: #fff;
+            border: none; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+            float: right; 
+            margin-left: 10px;
+        }
+        
+        .view-description-btn:hover {
+            background-color: #0056b3; 
+        }
+        
+        .single-job-items{
+            box-shadow:5px 6px 10px  rgba(34,41,72,0.2);
+            translate: box-shadow 0.5s ease;
+            border-left: 3px solid rgba(0, 0, 255, 0.454);
+            border-radius:10px ;
+            
+        }
+        
+        .single-job-items:hover{
+            box-shadow:10px 22px 57px 0px rgba(34,41,72,0.2)
+        }
+        
+        
+        
+        
+        
+        
+        
+        .custom-card {
+            margin: 20px 0;
+            border: 1px solid #ced4da;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+            transition: box-shadow 0.3s ease-in-out;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        
+        .custom-card-header {
+            padding: 1rem;
+            background-color: #060d14b3;
+            color: #fff;
+            font-size: 1.25rem;
+            border-bottom: 1px solid #0056b3;
+        }
+        
+        .custom-card-body {
+            padding: 1rem;
+        }
+        
+        .custom-card-title {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .custom-card-text {
+            font-size: 1rem;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+        
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        
+        .custom-card:hover {
+            box-shadow: 0 8px 42px rgba(0, 0, 0, 0.5);
+        }
+        
+        .custom-card-header:hover {
+            background-color: #0056b3;
+        }
+        
+        .custom-card-text a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+        
+        .custom-card-text a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        
+        
+        .badge {
+            font-size: 35px;
+            padding: 20px 35px;
+            background-color: #0062ffe1;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.6);
+            margin-top: 10px;
+            
+        }
+        
+        
+        #progress-container {
+            width: 150px;
+            height: 150px;
+            position: relative;
+        }
+        
+        .progressbar-text {
+            font-size: 24px;
+            font-weight: bold;
+            fill: #3498db;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .progressbar-percentage {
+            font-size: 14px;
+            color: #777;
+            text-align: center;
+            margin-top: 5px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="assets/img/logo/logo.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+        <div class="header-area header-transparrent">
+            <div class="headder-top header-sticky">
+                <div class="container">
+                    <div class="row align-items-center justify-content-end">
+                        <div class="col-lg-4">
+                            <div class="logo">
+                                <img src="{% static 'img/logo/logo.png' %}" alt="Logo">
+                            </div>  
+                        </div>
+                        <div class="col-lg-4  "> 
+                            <div class="main-menu">
+                                <nav class="d-none d-lg-block">
+                                    <ul id="navigation">
+                                        <li><a href="{% url 'dashboard' %}" >Dashboard</a></li>
+                                        <li><a href=""  style="color:red;">Job Finder</a></li>
+                                        
+                                        <li><a href="{% url 'profile' %}">My Profile</a></li>
+                                        
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-lg-4"> 
+                            <div class="header-btn d-none f-right d-lg-block "> 
+                                <a href="{% url 'user_logout' %}" class="btn head-btn1">LogOut</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        {% if not top_job_descriptions %}
+        <div class="container m-5">
+            <div class="row justify-content-center text-center">
+                <div class="alert alert-primary " role="alert">
+                    <h2 class="alert-heading">Upload Your Resume PDF</h2>
+                    <p class="mb-0">To find out which companies suit your resume, please upload your resume in PDF format.</p>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card border-primary">
+                        <div class="card-body text-center">
+                            <p class="card-text">submit is allowed only if the user uploads a valid resume file.</p>
+                            <div >
+                                <img src="{% static 'img/upload.png' %}" alt="" id="resicon" class="p-3">
+                                <h4 id="file-name" class="mt-4"></h4>
+                            </div>
+                            <form name="upload" method="post" action="" enctype="multipart/form-data" accept-charset="utf-8">
+                                {% csrf_token %}
+                                <div class="form-group custom-file-upload text-center">
+                                    <label for="pdf-fileup" class="btn btn-primary btn-md mx-auto  col-5" id="b-btn">Upload your Resume!</label>
+                                    <input type="file" value="" name="pdf-fileup" id="pdf-fileup" class="custom-file-input" accept=".pdf">
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" id="submit-btn" class="btn btn-success mx-auto  btn-submit btn-sm ">Submit</button>
+                                </div>
+                                <p id="error-message" class="error-message text-center"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
+        <div class="container col-5">
+            {% if resume_score %}
+            <div class="custom-card">
+                <div class="custom-card-header text-center">
+                    Your Resume Strength
+                </div>
+                {% comment %} <div class="custom-card-body">
+                    <h5 class="custom-card-title">Score: {{ resume_score }}</h5>
+                    <p class="custom-card-text">Your resume score is calculated based on education, work experience, skills.</p>
+                </div> {% endcomment %}
+                <p style="text-center" class="p-3 font-weight-bold text-xs">Your Resume Strength will be determined by your Skills and Achievements.</p>
+                <div id="progress-container" class="m-3 mx-auto">
+                    <span id="django-value" class="progressbar-text">{{ resume_score }}%</span>
+                </div>
+                <script>
+                    var djangoValue = {{ resume_score }};
+                    
+                    var progressBar = new ProgressBar.Circle('#progress-container', {
+                        color: '#3498db',
+                        strokeWidth: 8,
+                        trailWidth: 4,
+                        duration: 2000,
+                        easing: 'easeInOut',
+                        text: {
+                            value: '0',
+                            className: 'progressbar-text'
+                        },
+                        from: { color: '#aaa', width: 4 },
+                        to: { color: '#3498db', width: 8 },
+                        step: function(state, circle) {
+                            circle.path.setAttribute('stroke', state.color);
+                            circle.path.setAttribute('stroke-width', state.width);
+                            var value = Math.round(circle.value() * 100);
+                            circle.setText(value + '%');
+                            document.getElementById('django-value').textContent = value + '%';
+                        }
+                    });
+                    
+                    progressBar.animate(djangoValue / 100);
+                </script>
+            </div>
+            {% endif %}
+        </div>
+        {% if top_job_descriptions %}
+        <div class="container m-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2 class="text-primary">Matched Companies</h2>
+                    <p class="lead">Explore the companies that match your criteria</p>
+                </div>
+            </div>
+        </div>
+        
+        {% for job_description in top_job_descriptions %}
+        
+        <div class="single-job-items mb-30 col-9 mx-auto" style="background-color: azure;">
+            <div class="job-items">
+                <div class="company-img">
+                    <img src="{% static 'img/job12.png' %}" alt="" id="resicon" class="p-3">
+                </div>
+                <div class="job-tittle job-tittle2">
+                    <a href="#">
+                        <h4>{{ job_description.position_title }}</h4>
+                    </a>
+                    <ul>
+                        <li><i class="fas fa-building"></i><span>Company Name : </span>{{ job_description.company_name }}</li><br>
+                        <li><i class="fas fa-briefcase mt-3"></i><span >Job Portal : </span>
+                            {% if job_description.portal|lower == "indeed" %}
+                            <a href="https://www.indeed.com" target="_blank" style="color: blue;">
+                                <img src="{% static 'img/l5.png' %}" alt="" id="resicon" class="" style="width:16px;"> Indeed
+                            </a>
+                            {% elif job_description.portal|lower == "glass door" %}
+                            <a href="https://www.glassdoor.com" target="_blank" style="color: blue;">
+                                <img src="{% static 'img/l2.png' %}" alt="" id="resicon" class="" style="width:16px;"> Glassdoor
+                            </a>
+                            {% elif job_description.portal|lower == "linkedin" %}
+                            <a href="https://www.linkedin.com" target="_blank" style="color: blue;">
+                                <img src="{% static 'img/l1.png' %}" alt="" id="resicon" class=""> LinkedIn
+                            </a>
+                            {% elif job_description.portal|lower == "naukari" %}
+                            <a href="https://www.naukri.com" target="_blank" style="color: blue;">
+                                <img src="{% static 'img/l4.webp' %}" alt="" id="resicon" class="" style="width:16px;"> Naukri
+                            </a>
+                            {% elif job_description.portal|lower == "hirist" %}
+                            <a href="https://www.hirist.com" target="_blank" style="color: blue;">
+                                <img src="{% static 'img/l3.webp' %}" alt="" id="resicon" class="" style="width:16px;"> Hirist
+                            </a>
+                            {% elif job_description.portal|lower == "shine" %}
+                            <a href="https://www.shine.com" target="_blank" style="color: blue;">
+                                <img src="{% static 'img/l7.png' %}" alt="" id="resicon" class="" style="width:16px;"> Shine
+                            </a>
+                            {% elif job_description.portal|lower == "hirect" %}
+                            <a href="https://www.hirect.in" target="_blank" style="color: blue;">
+                                <img src="{% static 'img/l6.png' %}" alt="" id="resicon" class="" style="width:16px;"> Hirect
+                            </a>
+                            {% else %}
+                            {{ job_description.portal }}
+                            {% endif %}
+                            
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="items-link items-link2 col-12 mt-2">
+                <button class="view-description-btn">View Description</button>
+            </div>
+            <div class="p-3 job-description" style="display: none;">
+                <div>
+                    <h6 style="font-size: 20px; font-weight: bold;">Job Description :</h6>
+                    <p style="padding: 20px; text-align: justify; font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; font-size: 16px;">
+                        {{ job_description.job_description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <script>
+            document.querySelectorAll('.view-description-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const jobDescription = this.closest('.single-job-items').querySelector('.job-description');
+                    jobDescription.style.display = jobDescription.style.display === 'none' ? 'block' : 'none';
+                });
+            });
+        </script>
+        
+        
+        <script>
+            document.getElementById('pdf-fileup').addEventListener('change', function() {
+                var fileInput = document.getElementById('pdf-fileup');
+                var fileName = document.getElementById('file-name');
+                fileName.textContent = fileInput.files[0].name;
+                document.getElementById('b-btn').style.display = 'none'; 
+                document.getElementById('submit-btn').style.display = 'block';
+            });
+            
+            document.getElementById('submit-btn').addEventListener('click', function(event) {
+                var fileInput = document.getElementById('pdf-fileup');
+                if (fileInput.files.length === 0) {
+                    event.preventDefault(); 
+                    document.getElementById('error-message').textContent = 'Please select a file.';
+                }
+            });
+        </script>
+        
+        
+    </main>
+    <footer>
+        <!-- Footer Start-->
+        <div class="footer-area footer-bg footer-padding">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption mb-30">
+                                <div class="footer-tittle">
+                                    <h4>About Our Object Detection Project</h4>
+                                    <div class="footer-pera">
+                                        <p>Our platform utilizes cutting-edge object detection technology to empower users, especially those with visual impairments, to interact with their environment more independently.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Contact Info</h4>
+                                <ul>
+                                    <li>
+                                        <p>Address :Lb nagar, Hyderabad.</p>
+                                    </li>
+                                    <li><a href="#">Phone :+91 8555 8879 86</a></li>
+                                    <li><a href="#">Email : info@codebook.in</a></li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Important Link</h4>
+                                <ul>
+                                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                                    <li><a href="">Job Finder</a></li>
+                                    <li><a href="{% url 'profile' %}">My Profile</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!--  -->
+            
+        </div>
+    </div>
+    <!-- footer-bottom area -->
+    <div class="footer-bottom-area footer-bg">
+        <div class="container">
+            <div class="footer-border">
+                <div class="row d-flex justify-content-between align-items-center">
+                    <div class="col-xl-10 col-lg-10 ">
+                        <div class="footer-copy-right">
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://codebook.in" target="_blank">Codebook</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End-->
+</footer>
+
+<!-- JS here -->
+
+<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+<script src="{% static 'js/price_rangs.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/animated.headline.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.sticky.js' %}"></script>
+<script src="{% static 'js/contact.js' %}"></script>
+<script src="{% static 'js/jquery.form.js' %}"></script>
+<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'js/mail-script.js' %}"></script>
+<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+
+</body>
+</html>
